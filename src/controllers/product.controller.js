@@ -1,6 +1,7 @@
 const express = require("express");
 const Product = require("../models/product.model");
 const router = express.Router();
+const aunthenticate = require("../middlewares/authentication")
 
 // Get route
 
@@ -28,7 +29,7 @@ router.get("/:id", async (req, res) => {
 
 // post route
 
-router.post("",async (req, res) => {
+router.post("", aunthenticate, async (req, res) => {
     try {
         const product = await Product.create(req.body);
         return res.status(200).send(product)
