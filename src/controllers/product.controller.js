@@ -1,13 +1,13 @@
 const express = require("express");
-const product = require("../models/product.model");
+const Product = require("../models/product.model");
 const router = express.Router();
 
 // Get route
 
 router.get("", async (req, res) => {
     try {
-        const Product = await product.find().lean().exec();
-        return res.status(200).send(Product)
+        const product = await Product.find().lean().exec();
+        return res.status(200).send(product)
     }
     catch (err) {
         return res.status(500).send(err.message);
@@ -18,8 +18,8 @@ router.get("", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
     try {
-        const Product = await product.find(req.params.id).lean().exec();
-        return res.status(200).send(Product)
+        const product = await Product.find(req.params.id).lean().exec();
+        return res.status(200).send(product)
     }
     catch (err) {
         return res.status(500).send(err.message);
@@ -28,10 +28,10 @@ router.get("/:id", async (req, res) => {
 
 // post route
 
-router.post("", async (req, res) => {
+router.post("",async (req, res) => {
     try {
-        const Product = await product.create(req.body);
-        return res.status(200).send(Product)
+        const product = await Product.create(req.body);
+        return res.status(200).send(product)
     }
     catch (err) {
         return res.status(500).send(err.message);
@@ -42,8 +42,8 @@ router.post("", async (req, res) => {
 
 router.patch("/:id", async (req, res) => {
     try {
-        const Product = await product.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        return res.status(200).send(Product)
+        const product = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        return res.status(200).send(product)
     }
     catch (err) {
         return res.status(500).send(err.message);
@@ -54,8 +54,8 @@ router.patch("/:id", async (req, res) => {
 
 router.delete("/:id", async (req, res) => {
     try {
-        const Product = await product.findByIdAndDelete(req.params.id);
-        return res.status(200).send(Product)
+        const product = await Product.findByIdAndDelete(req.params.id);
+        return res.status(200).send(product)
     }
     catch (err) {
         return res.status(500).send(err.message);

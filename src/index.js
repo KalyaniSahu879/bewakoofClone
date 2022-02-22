@@ -4,6 +4,7 @@ const connect = require("./configs/db");
 // const womenController = require("./controllers/women.controller");
 // const accessoriesController = require("./controllers/accessories.controller");
 const { register, login, newToken } = require("./controllers/auth.controller");
+const productController = require("./controllers/product.controller");
 const userController = require("./controllers/user.controller");
 const passport = require("./configs/google-oauth");
 const app = express();
@@ -13,7 +14,8 @@ app.use(express.json())
 // app.use("/accessories", accessoriesController);
 app.use("/register", register);
 app.use("/login", login);
-app.use("/user", userController);
+app.use("/users", userController);
+app.use("/product",productController)
 passport.serializeUser(function (user, done) {
     done(null, user);
   });

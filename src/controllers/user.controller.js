@@ -1,6 +1,7 @@
 const express = require("express");
 const User = require("../models/user.model");
 const router = express.Router();
+const authenticate = require("../middlewares/authentication");
 
 // Get route
 
@@ -61,4 +62,21 @@ router.delete("/:id", async(req, res)=>{
         return res.status(500).send(err.message);
     }
 })
+
+
+// Creating user profile and updating it
+
+router.post("/profile",authenticate, async(req, res)=>{
+    try{
+        let user = req.user;
+        user.full_name = req.body.full_name;
+        user.date_of_birth = req.body.date_of_birth;
+        user.gender = req.body.gender;
+        return res.send(user);
+    }
+    catch(err){
+        return res.status(500).send(err.message);
+    }
+})
+
 module.exports = router;
