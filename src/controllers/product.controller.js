@@ -1,42 +1,63 @@
 const express = require("express");
+const product = require("../models/product.model");
 const router = express.Router();
-router.get("", async(req, res)=>{
-    try{
 
+// Get route
+
+router.get("", async (req, res) => {
+    try {
+        const Product = await product.find().lean().exec();
+        return res.status(200).send(Product)
     }
-    catch(err){
+    catch (err) {
         return res.status(500).send(err.message);
     }
 })
-router.get("/:id", async(req, res)=>{
-    try{
 
+// Get product by Id route
+
+router.get("/:id", async (req, res) => {
+    try {
+        const Product = await product.find(req.params.id).lean().exec();
+        return res.status(200).send(Product)
     }
-    catch(err){
+    catch (err) {
         return res.status(500).send(err.message);
     }
 })
-router.post("", async(req, res)=>{
-    try{
 
+// post route
+
+router.post("", async (req, res) => {
+    try {
+        const Product = await product.create(req.body);
+        return res.status(200).send(Product)
     }
-    catch(err){
+    catch (err) {
         return res.status(500).send(err.message);
     }
 })
-router.patch("/:id", async(req, res)=>{
-    try{
 
+// patch route
+
+router.patch("/:id", async (req, res) => {
+    try {
+        const Product = await product.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        return res.status(200).send(Product)
     }
-    catch(err){
+    catch (err) {
         return res.status(500).send(err.message);
     }
 })
-router.delete("/:id", async(req, res)=>{
-    try{
 
+// delete route
+
+router.delete("/:id", async (req, res) => {
+    try {
+        const Product = await product.findByIdAndDelete(req.params.id);
+        return res.status(200).send(Product)
     }
-    catch(err){
+    catch (err) {
         return res.status(500).send(err.message);
     }
 })

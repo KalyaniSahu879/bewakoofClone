@@ -1,42 +1,63 @@
 const express = require("express");
+const accessories = require("../models/accessories.model");
 const router = express.Router();
-router.get("", async(req, res)=>{
-    try{
 
+// Get route
+
+router.get("", async (req, res) => {
+    try {
+        const Accessories = await accessories.find().lean().exec();
+        return res.status(200).send(Accessories)
     }
-    catch(err){
+    catch (err) {
         return res.status(500).send(err.message);
     }
 })
-router.get("/:id", async(req, res)=>{
-    try{
 
+// Get accessories by Id route
+
+router.get("/:id", async (req, res) => {
+    try {
+        const Accessories = await accessories.find(req.params.id).lean().exec();
+        return res.status(200).send(Accessories)
     }
-    catch(err){
+    catch (err) {
         return res.status(500).send(err.message);
     }
 })
-router.post("", async(req, res)=>{
-    try{
 
+// post route
+
+router.post("", async (req, res) => {
+    try {
+        const Accessories = await accessories.create(req.body);
+        return res.status(200).send(Accessories)
     }
-    catch(err){
+    catch (err) {
         return res.status(500).send(err.message);
     }
 })
-router.patch("/:id", async(req, res)=>{
-    try{
 
+// patch route
+
+router.patch("/:id", async (req, res) => {
+    try {
+        const Accessories = await accessories.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        return res.status(200).send(Accessories)
     }
-    catch(err){
+    catch (err) {
         return res.status(500).send(err.message);
     }
 })
-router.delete("/:id", async(req, res)=>{
-    try{
 
+// delete route
+
+router.delete("/:id", async (req, res) => {
+    try {
+        const Accessories = await accessories.findByIdAndDelete(req.params.id);
+        return res.status(200).send(Accessories)
     }
-    catch(err){
+    catch (err) {
         return res.status(500).send(err.message);
     }
 })
