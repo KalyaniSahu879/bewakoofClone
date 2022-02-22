@@ -1,60 +1,66 @@
-const express = require("express");
-const { body, validationResult } = require('express-validator');
-
+require("dotenv").config();
+const jwt = require("jsonwebtoken");
 const User = require("../models/user.model");
-const router = express.Router();
 
+const newToken = (user) => {
+  return jwt.sign({ user }, process.env.JWT_SECRET_KEY);
+};
 
+const register = async (req, res) => {
+  try {
+    // we will try to find the user with the email provided
+    let user = await User.findOne({ mobile_number: req.body.mobile_number }).lean().exec();
 
+    // if the user is found then it is an error
+    if (user)
+      return res.status(400).send({ message: "Please try another Mobile Number" });
 
+    // if user is not found then we will create the user with the email and the password provided
+    user = await User.create(req.body);
 
+    // user = new User()
+    // user.email = req.body.email
+    // user.password = req.body.password
+    // user.save();
 
+    // then we will create the token for that user
+    const token = newToken(user);
 
+    // then return the user and the token
 
-// post route regeisterd route
+    res.send({ user, token });
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+};
 
-router.post("", body("email").isEmail(), body("mobile_number").isLength({ min: 10, max: 10 }), async (req, res) => {
-    try {
-        let user;
-        // check any validations error
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() });
-        }
+const login = async (req, res) => {
+  try {
+    // we will try to find the user with the email provided
+    const user = await User.findOne({ mobile_number: req.body.mobile_number });
 
+    // If user is not found then return error
+    if (!user)
+      return res
+        .status(400)
+        .send({ message: "Please try another mobile number or password" });
 
-        console.log("user")
-        user = await User.findOne({ $or: [{ email: req.body.email }, { mobile_number: req.body.mobile_number }] });
+    // if user is found then we will match the passwords
+    const match = user.checkPassword(req.body.password);
 
-        //    check  if user is already exists or not
-        if (user) {
-            return res.send({ message: "Try another email or mobile number " })
-        }
-        console.log(user)
-        //    else  user not exists create a user 
-        if (!user) {
+    if (!match)
+      return res
+        .status(400)
+        .send({ message: "Please try another mobile number or password" });
 
-            user = await User.create(req.body)
-            console.log(user)
-            return res.status(200).send(user)
-        }
+    // then we will create the token for that user
+    const token = newToken(user);
 
-        // const user = await User.create(req.body);
+    // then return the user and the token
+    res.send({ user, token });
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+};
 
-    }
-    catch (err) {
-        return res.status(500).send(err.message);
-    }
-})
-
-
-
-
-
-
-
-
-
-
-
-module.exports = router;
+module.exports = { register, login, newToken };

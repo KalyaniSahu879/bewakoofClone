@@ -3,16 +3,42 @@ const connect = require("./configs/db");
 // const menController = require("./controllers/men.controller");
 // const womenController = require("./controllers/women.controller");
 // const accessoriesController = require("./controllers/accessories.controller");
-const register = require("./controllers/auth.controller");
+const { register, login, newToken } = require("./controllers/auth.controller");
 const userController = require("./controllers/user.controller");
+const passport = require("./configs/google-oauth");
 const app = express();
 app.use(express.json())
 // app.use("/men", menController);
 // app.use("/women", womenController);
 // app.use("/accessories", accessoriesController);
 app.use("/register", register);
-// app.use("/login", login);
+app.use("/login", login);
 app.use("/user", userController);
+passport.serializeUser(function (user, done) {
+    done(null, user);
+  });
+  
+  passport.deserializeUser(function (user, done) {
+    done(null, user);
+  });
+  
+  app.get(
+    "/auth/google",
+    passport.authenticate("google", { scope: ["email", "profile"] })
+  );
+  
+  app.get(
+    "/auth/google/callback",
+    passport.authenticate("google", {
+      failureRedirect: "/auth/google/failure",
+    }),
+    (req, res) => {
+      const { user } = req;
+      const token = newToken(user);
+  
+      return res.send({ user, token });
+    }
+  );
 app.listen(2345, async () => {
     try {
         await connect();
