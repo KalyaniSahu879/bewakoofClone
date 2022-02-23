@@ -24,7 +24,7 @@ const Product = require("../models/product.model");
 // });
 
 // Get route
-router.get("", menhomepage);
+// router.get("", menhomepage);
 router.get("/printed-tshirt", getcontroller);
 router.get("/halfsleeves-tshirt", getcontroller);
 router.get("/fullsleves-tshirt", getcontroller);

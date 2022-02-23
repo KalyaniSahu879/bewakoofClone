@@ -11,7 +11,7 @@ const productSchema = new mongoose.Schema(
     colour: { type: String, required: true },
     brand: { type: String, required: false },
     tribe: { type: Number, required: true },
-    product_description: { type: String, required: true },
+    desc: { type: String, required: true },
 
     offers: [{ type: String }],
     ratings: { type: Number, required: true },
