@@ -33,9 +33,10 @@ router.get("/jackets", getcontroller);
 router.get("/denims", getcontroller);
 router.get("/vests", getcontroller);
 router.get("/kurtas", getcontroller);
-router.get("/shirts", getcontroller);
+router.get("/flip-flops", getcontroller);
 router.get("/backpacks", getcontroller);
 router.get("/shorts", getcontroller);
+router.get("/sweaters", getcontroller);
 router.get("/sweatshirts", getcontroller);
 
 router.get("/printed-tshirt/:id", getcontrollerbyid);

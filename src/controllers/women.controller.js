@@ -3,18 +3,20 @@ const express = require("express");
 const router = express.Router();
 const { getcontroller, getcontrollerbyid } = require("./mencrudcontroller");
 
-router.get("/printed-tshirt", getcontroller);
+router.get("/boyfriend-tshirts", getcontroller);
+router.get("/full-sleve-tshirt", getcontroller);
 router.get("/halfsleeves-tshirt", getcontroller);
-router.get("/fullsleves-tshirt", getcontroller);
+router.get("/sweatshirt-hoodies", getcontroller);
 router.get("/jackets", getcontroller);
-router.get("/jockets", getcontroller);
+router.get("/joggers", getcontroller);
+router.get("/pyjamas", getcontroller);
 router.get("/denims", getcontroller);
-router.get("/vest", getcontroller);
 router.get("/kurtas", getcontroller);
-router.get("/shirts", getcontroller);
+router.get("/vest", getcontroller);
 router.get("/backpacks", getcontroller);
 router.get("/shorts", getcontroller);
-router.get("/sweatshirt-hoodies", getcontroller);
+
+router.get("/3qshirts", getcontroller);
 
 router.get("/printed-tshirt/:id", getcontrollerbyid);
 router.get("/halfsleeves-tshirt/:id", getcontrollerbyid);
@@ -28,8 +30,6 @@ router.get("/shirts/:id", getcontrollerbyid);
 router.get("/backpacks/:id", getcontrollerbyid);
 router.get("/shorts/:id", getcontrollerbyid);
 router.get("/sweatshirt-hoodies/:id", getcontrollerbyid);
-
-
 
 // router.patch("/:id", async (req, res) => {
 //   try {
