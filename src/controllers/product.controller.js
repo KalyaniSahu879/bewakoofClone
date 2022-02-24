@@ -1,6 +1,6 @@
 const express = require("express");
 const Product = require("../models/product.model");
-console.log(Product);
+
 const router = express.Router();
 const aunthenticate = require("../middlewares/authentication");
 
@@ -9,7 +9,7 @@ const aunthenticate = require("../middlewares/authentication");
 router.get("", async (req, res) => {
   try {
     const product = await Product.find().lean().exec();
-    console.log(product);
+
     return res.status(200).send(product);
   } catch (err) {
     return res.status(500).send(err.message);
@@ -20,7 +20,8 @@ router.get("", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   try {
-    const product = await Product.find(req.params.id).lean().exec();
+    console.log("yes");
+    const product = await Product.find({ _id: req.params.id }).lean().exec();
     return res.status(200).send(product);
   } catch (err) {
     return res.status(500).send(err.message);

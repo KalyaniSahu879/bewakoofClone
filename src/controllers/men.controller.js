@@ -2,8 +2,7 @@ const express = require("express");
 const { append } = require("vary");
 
 const router = express.Router();
-const { getcontroller, getcontrollerbyid } = require("./mencrudcontroller");
-console.log(getcontrollerbyid);
+const { getmencontroller, getcontrollerbyid } = require("./mencrudcontroller");
 
 const Product = require("../models/product.model");
 
@@ -25,19 +24,19 @@ const Product = require("../models/product.model");
 
 // Get route
 // router.get("", menhomepage);
-router.get("/printed-tshirt", getcontroller);
-router.get("/half-sleeve-tshirt", getcontroller);
-router.get("/full-sleeves-tshirt", getcontroller);
-router.get("/joggers", getcontroller);
-router.get("/jackets", getcontroller);
-router.get("/denims", getcontroller);
-router.get("/vests", getcontroller);
-router.get("/kurtas", getcontroller);
-router.get("/flip-flops", getcontroller);
-router.get("/backpacks", getcontroller);
-router.get("/shorts", getcontroller);
-router.get("/sweaters", getcontroller);
-router.get("/sweatshirts", getcontroller);
+router.get("/printed-tshirt", getmencontroller);
+router.get("/half-sleeve-tshirt", getmencontroller);
+router.get("/full-sleeves-tshirt", getmencontroller);
+router.get("/joggers", getmencontroller);
+router.get("/jackets", getmencontroller);
+router.get("/denims", getmencontroller);
+router.get("/vests", getmencontroller);
+router.get("/kurtas", getmencontroller);
+router.get("/flip-flops", getmencontroller);
+router.get("/backpacks", getmencontroller);
+router.get("/shorts", getmencontroller);
+router.get("/sweaters", getmencontroller);
+router.get("/sweatshirts", getmencontroller);
 
 router.get("/printed-tshirt/:id", getcontrollerbyid);
 router.get("/halfsleeves-tshirt/:id", getcontrollerbyid);

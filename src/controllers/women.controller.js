@@ -1,22 +1,24 @@
 const express = require("express");
 
 const router = express.Router();
-const { getcontroller, getcontrollerbyid } = require("./mencrudcontroller");
+const {
+  getcontrollerbyid,
+  getwomencontroller,
+} = require("./mencrudcontroller");
 
-router.get("/boyfriend-tshirts", getcontroller);
-router.get("/full-sleve-tshirt", getcontroller);
-router.get("/halfsleeves-tshirt", getcontroller);
-router.get("/sweatshirt-hoodies", getcontroller);
-router.get("/jackets", getcontroller);
-router.get("/joggers", getcontroller);
-router.get("/pyjamas", getcontroller);
-router.get("/denims", getcontroller);
-router.get("/kurtas", getcontroller);
-router.get("/vest", getcontroller);
-router.get("/backpacks", getcontroller);
-router.get("/shorts", getcontroller);
+router.get("/boyfriend-tshirts", getwomencontroller);
+router.get("/full-sleve-tshirt", getwomencontroller);
+router.get("/3qshirts", getwomencontroller);
+router.get("/sweatshirt-hoodies", getwomencontroller);
+router.get("/jackets", getwomencontroller);
+router.get("/denims", getwomencontroller);
 
-router.get("/3qshirts", getcontroller);
+router.get("/joggers", getwomencontroller);
+router.get("/shorts", getwomencontroller);
+router.get("/boxers", getwomencontroller);
+router.get("/pyjamas", getwomencontroller);
+
+router.get("/pants", getwomencontroller);
 
 router.get("/printed-tshirt/:id", getcontrollerbyid);
 router.get("/halfsleeves-tshirt/:id", getcontrollerbyid);

@@ -5,7 +5,6 @@ const getcontrollerbyid = async (req, res) => {
     // the name of the categorie should be exactly same
 
     const Men = await Product.findById(req.params.id).lean().exec();
-    console.log(Men);
 
     return res.status(200).send(Men);
   } catch (err) {
@@ -13,18 +12,41 @@ const getcontrollerbyid = async (req, res) => {
   }
 };
 
-const getcontroller = async (req, res) => {
+const getmencontroller = async (req, res) => {
   try {
     // the name of the categorie should be exactly same
 
-    console.log("yes");
     let myString = req.path;
 
     if (myString.charAt(0) === "/");
     myString = req.path.slice(1);
 
-    const Men = await Product.find({ categories: myString }).lean().exec();
-    console.log(Men);
+    const Men = await Product.find({ categories: myString, gender: "Male" })
+      .lean()
+      .exec();
+
+    const menlength = await Product.find({
+      categories: myString,
+    }).countDocuments();
+
+    return res.status(200).send({ Men, menlength });
+  } catch (err) {
+    return res.status(500).send(err.message);
+  }
+};
+const getwomencontroller = async (req, res) => {
+  try {
+    // the name of the categorie should be exactly same
+
+    let myString = req.path;
+
+    if (myString.charAt(0) === "/");
+    myString = req.path.slice(1);
+
+    const Men = await Product.find({ categories: myString, gender: "Female" })
+      .lean()
+      .exec();
+
     const menlength = await Product.find({
       categories: myString,
     }).countDocuments();
@@ -35,4 +57,8 @@ const getcontroller = async (req, res) => {
   }
 };
 
-module.exports = { getcontroller, getcontrollerbyid };
+module.exports = {
+  getmencontroller,
+  getwomencontroller,
+  getcontrollerbyid,
+};
