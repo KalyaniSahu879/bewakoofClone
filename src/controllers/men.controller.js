@@ -26,17 +26,17 @@ const Product = require("../models/product.model");
 // Get route
 // router.get("", menhomepage);
 router.get("/printed-tshirt", getcontroller);
-router.get("/halfsleeves-tshirt", getcontroller);
-router.get("/fullsleves-tshirt", getcontroller);
-router.get("/jackets", getcontroller);
+router.get("/half-sleeve-tshirt", getcontroller);
+router.get("/full-sleeves-tshirt", getcontroller);
+router.get("/joggers", getcontroller);
 router.get("/jockets", getcontroller);
 router.get("/denims", getcontroller);
-router.get("/vest", getcontroller);
+router.get("/vests", getcontroller);
 router.get("/kurtas", getcontroller);
 router.get("/shirts", getcontroller);
 router.get("/backpacks", getcontroller);
 router.get("/shorts", getcontroller);
-router.get("/sweatshirt-hoodies", getcontroller);
+router.get("/sweatshirts", getcontroller);
 
 router.get("/printed-tshirt/:id", getcontrollerbyid);
 router.get("/halfsleeves-tshirt/:id", getcontrollerbyid);
