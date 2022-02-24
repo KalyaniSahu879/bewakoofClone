@@ -29,7 +29,7 @@ router.get("/printed-tshirt", getcontroller);
 router.get("/half-sleeve-tshirt", getcontroller);
 router.get("/full-sleeves-tshirt", getcontroller);
 router.get("/joggers", getcontroller);
-router.get("/jockets", getcontroller);
+router.get("/jackets", getcontroller);
 router.get("/denims", getcontroller);
 router.get("/vests", getcontroller);
 router.get("/kurtas", getcontroller);

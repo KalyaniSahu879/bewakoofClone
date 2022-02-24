@@ -9,11 +9,9 @@ const newToken = (user) => {
 const register = async (req, res) => {
   try {
     // we will try to find the user with the email provided
-    console.log(req.body);
     let user = await User.findOne({ mobile_number: req.body.mobile_number })
       .lean()
       .exec();
-    console.log(user);
 
     // if the user is found then it is an error
     if (user)
@@ -69,4 +67,22 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { register, login, newToken };
+const login_mobile = async (req, res) => {
+  try {
+    // we will try to find the user with the email provided
+    const user = await User.findOne({ mobile_number: req.body.mobile_number });
+
+    // If user is not found then return error
+    if (!user)
+      return res
+        .status(400)
+        .send({ message: "Please try another mobile number or password" });
+    const token = newToken(user);
+    // then return the user and the token
+    res.send({ user, token });
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+};
+
+module.exports = { register, login, newToken, login_mobile };
