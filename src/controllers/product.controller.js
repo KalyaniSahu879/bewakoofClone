@@ -21,7 +21,7 @@ router.get("", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     console.log("yes");
-    const product = await Product.find({ _id: req.params.id }).lean().exec();
+    const product = await Product.findById(req.params.id).lean().exec();
     return res.status(200).send(product);
   } catch (err) {
     return res.status(500).send(err.message);

@@ -1,4 +1,5 @@
 const Product = require("../models/product.model");
+const accessories = require("../models/accessories.mode");
 
 const getcontrollerbyid = async (req, res) => {
   try {
@@ -21,7 +22,12 @@ const getmencontroller = async (req, res) => {
     if (myString.charAt(0) === "/");
     myString = req.path.slice(1);
 
-    const Men = await Product.find({ categories: myString, gender: "Male" })
+    const Men = await Product.find({
+      $and: [
+        { categories: myString },
+        { $or: [{ gender: "Male" }, { gender: "male" }] },
+      ],
+    })
       .lean()
       .exec();
 
@@ -43,7 +49,12 @@ const getwomencontroller = async (req, res) => {
     if (myString.charAt(0) === "/");
     myString = req.path.slice(1);
 
-    const Men = await Product.find({ categories: myString, gender: "Female" })
+    const Men = await Product.find({
+      $and: [
+        { categories: myString },
+        { $or: [{ gender: "Female" }, { gender: "female" }] },
+      ],
+    })
       .lean()
       .exec();
 
@@ -57,8 +68,33 @@ const getwomencontroller = async (req, res) => {
   }
 };
 
+const getaccessoriescontroller = async (req, res) => {
+  try {
+    // the name of the categorie should be exactly same
+
+    let myString = req.path;
+    console.log(myString);
+
+    if (myString.charAt(0) === "/");
+    myString = req.path.slice(1);
+
+    const Men = await accessories.find({ categories: myString }).lean().exec();
+
+    const menlength = await accessories
+      .find({
+        categories: myString,
+      })
+      .countDocuments();
+
+    return res.status(200).send({ Men, menlength });
+  } catch (err) {
+    return res.status(500).send(err.message);
+  }
+};
+
 module.exports = {
   getmencontroller,
   getwomencontroller,
   getcontrollerbyid,
+  getaccessoriescontroller,
 };

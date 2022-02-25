@@ -1,8 +1,11 @@
 const express = require("express");
 const { append } = require("vary");
-
+const accessories = require("../models/accessories.mode");
 const router = express.Router();
-const { getmencontroller, getcontrollerbyid } = require("./mencrudcontroller");
+const {
+  getaccessoriescontroller,
+  getcontrollerbyid,
+} = require("./mencrudcontroller");
 
 const Product = require("../models/product.model");
 
@@ -24,20 +27,18 @@ const Product = require("../models/product.model");
 
 // Get route
 // router.get("", menhomepage);
-router.get("/printed-tshirt", getmencontroller);
-router.get("/half-sleeve-tshirt", getmencontroller);
-router.get("/full-sleeves-tshirt", getmencontroller);
-router.get("/joggers", getmencontroller);
-router.get("/jackets", getmencontroller);
-router.get("/denims", getmencontroller);
-router.get("/vests", getmencontroller);
-router.get("/kurtas", getmencontroller);
-router.get("/flip-flops", getmencontroller);
-router.get("/backpacks", getmencontroller);
-router.get("/shorts", getmencontroller);
-router.get("/sweaters", getmencontroller);
-router.get("/sweatshirts", getmencontroller);
-router.get("/pants", getmencontroller);
+router.get("/mobilecover", getaccessoriescontroller);
+router.get("/premiumglasscover", getaccessoriescontroller);
+router.get("/bags", getaccessoriescontroller);
+router.get("/sliders", getaccessoriescontroller);
+router.get("/calender-planners", getaccessoriescontroller);
+router.get("/notebooks", getaccessoriescontroller);
+router.get("/mugs", getaccessoriescontroller);
+
+router.get("/flip-flops", getaccessoriescontroller);
+router.get("/headphone-smartwatch", getaccessoriescontroller);
+router.get("/caps", getaccessoriescontroller);
+router.get("/socks", getaccessoriescontroller);
 
 router.get("/printed-tshirt/:id", getcontrollerbyid);
 router.get("/halfsleeves-tshirt/:id", getcontrollerbyid);
@@ -51,6 +52,27 @@ router.get("/shirts/:id", getcontrollerbyid);
 router.get("/backpacks/:id", getcontrollerbyid);
 router.get("/shorts/:id", getcontrollerbyid);
 router.get("/sweatshirt-hoodies/:id", getcontrollerbyid);
+
+router.post("", async (req, res) => {
+  try {
+    const Accessories = await accessories.create(req.body);
+    return res.status(200).send(Accessories);
+  } catch (err) {
+    return res.status(500).send(err.message);
+  }
+});
+
+router.get("/:id", async (req, res) => {
+  try {
+    const Accessories = await accessories
+      .find({ _id: req.params.id })
+      .lean()
+      .exec();
+    return res.status(200).send(Accessories);
+  } catch (err) {
+    return res.status(500).send(err.message);
+  }
+});
 
 // router.get("/fullsleves-tshirt", async (req, res) => {
 //   try {

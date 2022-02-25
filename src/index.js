@@ -2,7 +2,7 @@ const express = require("express");
 const connect = require("./configs/db");
 const menController = require("./controllers/men.controller");
 const womenController = require("./controllers/women.controller");
-// const accessoriesController = require("./controllers/accessories.controller");
+const accessoriesController = require("./controllers/accessoriescurdcontroller");
 const {
   register,
   login,
@@ -30,7 +30,7 @@ app.use("/product", productController);
 app.use("/address", addresscontroler);
 app.use("/men", menController);
 app.use("/women", womenController);
-// app.use("/accessories", accessoriescontroller);
+app.use("/accessories", accessoriesController);
 passport.serializeUser(function (user, done) {
   done(null, user);
 });
