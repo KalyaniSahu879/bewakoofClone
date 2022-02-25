@@ -30,6 +30,7 @@ app.use("/product", productController);
 app.use("/address", addresscontroler);
 app.use("/men", menController);
 app.use("/women", womenController);
+
 app.use("/accessories", accessoriesController);
 passport.serializeUser(function (user, done) {
   done(null, user);

@@ -18,7 +18,7 @@ router.get("", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   try {
-    const Address = await address.find(req.params.id).lean().exec();
+    const Address = await address.find({ _id: req.params.id }).lean().exec();
     return res.status(200).send(Address);
   } catch (err) {
     return res.status(500).send(err.message);
@@ -28,17 +28,17 @@ router.get("/:id", async (req, res) => {
 // post route
 
 router.post(
-  "",
+  "/:_id",
   body("full_name").notEmpty().withMessage("Full name should not be empty!"),
   body("city").notEmpty().withMessage("City should not be empty!"),
   body("state").notEmpty().withMessage("State should not be empty!"),
-  body("address_line1").notEmpty().withMessage("address should not be empty!"),
-  body("address_line2").notEmpty().withMessage("address  should not be empty!"),
+  body("flatno").notEmpty().withMessage("flatno should not be empty!"),
+
   body("pincode")
     .isLength({ min: 6, max: 6 })
     .withMessage("Pincode should be six digits"),
-  body("mobile_number")
-    .isLength({ min: 10, max: 10 })
+  body("mobilenumber")
+    .isLength({ min: 10, max: 11 })
     .withMessage(" Mobile Number should be ten digits"),
   async (req, res) => {
     try {
