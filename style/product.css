@@ -1,0 +1,134 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}#product_container
+{
+    width: 80%;
+    margin: auto;
+    
+    
+}
+.catName>ul
+{
+    display: flex;
+    padding: 5px;
+   
+    list-style-type: none;
+}.catName>ul>li{
+    margin: 10px;
+}.catName>ul>li>a{
+    text-decoration: none;
+    color: black;
+}.Number_of_Cat_item_and_name
+{
+margin-top: 60px;
+display: flex;
+justify-content: space-between;
+}
+.Number_of_Cat_item_and_name>a{
+    text-decoration: none;color: black;
+}.Number_of_Cat_item_and_name>li{
+    list-style-type: none;
+  cursor: pointer;
+    margin-left: 10px;
+}
+.product_item_left_nav
+{
+    display: flex;
+    margin-top: 30PX;
+  
+}.left_filter_nav
+{
+    width: 20%;
+    position: fixed;
+   
+}.left_filter_nav>ul>li
+{
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 0px 18px;
+    border-bottom: 1px solid wheat;
+}.left_filter_nav>ul>h5{
+    padding: 10px;
+}.left_filter_nav>ul>li>a{
+    text-decoration: none;
+    color: gray;
+}.product_item
+{
+    width: 100%;
+   
+}.product_item>ul{
+    display: flex;
+    float: right;
+    list-style-type: none;
+}.product_item>ul>li{
+padding: 2px;
+}
+.product_item_box
+{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 10px;
+    margin-top: 40px;
+}.product_item_box>div>img
+{
+    width: 100%;
+}.product_item_box>div>ul>li{
+    display: flex;
+}
+.product_item_box
+{
+    margin-left: 30%;
+}.sub_item>ul
+{
+list-style-type: none;
+padding: 16px 0px 16px;
+}.sub_item>ul>li
+{
+    padding: 6px 0px 10px;
+  
+}.sub_item
+{
+    position: absolute;
+  visibility: hidden;
+  width: 100%;
+  background-color: white;
+}
+.left_filter_nav>ul>li:hover .sub_item
+{
+    visibility: visible;
+    margin-top: 16px;
+    
+}.sub_item>ul>li>a{
+   text-decoration: none;
+   color: black;
+   font-size: 16px;
+   margin-left: 10px;
+}
+.SortBy
+{
+    position: absolute;
+    cursor: pointer;
+    line-height: 20px;
+    background-color: white;
+    box-shadow: 5px 10px 28px;
+    visibility: hidden;
+    z-index: 500;
+}.SortBy>ul{
+    list-style-type: none;
+    margin-right: 10px;
+}.SortBy>ul>li>a{
+    text-decoration: none;
+}
+
+.Number_of_Cat_item_and_name>li:hover .SortBy
+{
+    visibility: visible;
+}
+
+#sortPrice{
+    margin-top: 10px;
+}
+
+#nav_bar_manu{display: none}

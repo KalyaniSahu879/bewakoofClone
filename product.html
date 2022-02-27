@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>product</title>
+    <link rel="stylesheet" href="style/product.css">
+   <link rel="stylesheet" href="./style/spinner.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./style/navbar.css">
+    
+</head>
+
+
+<body>
+    <div id="navbar"></div>
+<div id = "margin-top-slider1"></div>
+
+    <div class="popup" id="popup-1" >
+        <div class="overlay"></div>
+        <div class="spinner1">
+
+        </div>
+    </div>
+    
+    <div id="product_container">
+        <!-- top menu start -->
+        <div class="catName">
+            <ul>
+                <li><a href="">Home</a></li>
+                <li>/</li>
+                <li><a href="">Women Clothing</a></li>
+            </ul>
+        </div>
+        <!-- top nav menu end -->
+        <!-- side filter start -->
+        <div class="Number_of_Cat_item_and_name">
+            <a href="#"><h2>Products<span>(9)</span></h2></a>
+            <!-- <li>Sort By:Popular<i class="fas fa-chevron-circle-down"></i> -->
+                <select name="" id="sortPrice" onchange="sort()">
+                    <option value="popular"> Sort By: Popular</option>
+                    <option value="new">New</option>
+                    <option value="high">Price :High to Low</option>
+                    <option value="low">Price :Low to High</option>
+                </select>
+              <div class="SortBy">
+                  <!-- <ul>
+                      <li><a href="">Popular</a></li>
+                      <li><a href="">New</a></li>
+                      <li><a href="">Price :High to Low</a></li>
+                      <li><a href="">Price :Low to High</a></li>
+
+                  </ul> -->
+                  
+              </div>
+            </li>
+        </div>
+        <div class="product_item_left_nav">
+            <div class="left_filter_nav">
+                
+                <ul>
+                    <h5>FILTER</h5>
+                    <li><a href="">Category</a><a href=""><i class="fas fa-chevron-circle-down"></i>
+                        <div class="sub_item">
+                          <ul>
+                              <li><a href="">Pyjama</a></li>
+                              <li><a href="">Palazzo</a></li>
+                              <li><a href="">Capri</a></li>
+                              <li><a href="">Cullotes</a></li>
+                              
+                             
+                            
+                          </ul>
+                        </div>
+                      </i></a></li>
+                    <li><a href="">Size</a><a href=""><i class="fas fa-chevron-circle-down"></i>
+                      <div class="sub_item">
+                        <ul>
+                            <li><a href="">Xs</a></li>
+                            <li><a href="">S</a></li>
+                            <li><a href="">M</a></li>
+                            <li><a href="">L</a></li>
+                            <li><a href="">XL</a></li>
+                            <li><a href="">2XL</a></li>
+                            <li><a href="">3XL</a></li>
+                            <li><a href="">4XL</a></li>
+                            <li><a href="">5XL</a></li>
+                            <li><a href="">30</a></li>
+                            <li><a href="">32</a></li>
+                            <li><a href="">34</a></li>
+                            <li><a href="">36</a></li>
+                           
+                          
+                        </ul>
+                      </div>
+                    </i></a></li>
+                    <li><a href="">Brand</a><a href=""><i class="fas fa-chevron-circle-down"></i></a>
+                        <div class="sub_item">
+                            <ul>
+                                <li><a href="">Clovia</a></li>
+                                <li><a href="">Bewkoof</a></li>
+                                <li><a href="">Smugglerz</a></li>
+                                <li><a href="">Smugglerz</a></li>
+                                <li><a href="">High Star</a></li>
+                                <li><a href="">Marca Disati</a></li>
+                                <li><a href="">Soxytoes</a></li>
+                                <li><a href="">Sweet Dream</a></li>
+                                <li><a href="">Recap</a></li>
+                              
+                            </ul>
+                          </div></li>
+                    
+                    <li><a href="">Color</a><a href=""><i class="fas fa-chevron-circle-down"></i></a>
+                        <div class="sub_item">
+                            <ul>
+                                <li><a href="">Red</a></li>
+                                <li><a href="">Blue</a></li>
+                                <li><a href="">White</a></li>
+                                <li><a href="">Green</a></li>
+                                <li><a href="">Orange</a></li>
+                                <li><a href="">Pink</a></li>
+                               
+                               
+                              
+                            </ul>
+                          </div></li>
+                    
+                    <li><a href="">Design</a><a href=""><i class="fas fa-chevron-circle-down"></i></a>
+                        <div class="sub_item">
+                            <ul>
+                                <li><a href="">Plain</a></li>
+                                <li><a href="">Solid</a></li>
+                                <li><a href="">Digital Printing</a></li>
+                                <li><a href="">Graphic Printing</a></li>
+                               
+                               
+                              
+                            </ul>
+                          </div></li>
+                    
+                    <li><a href="">Fit</a><a href=""><i class="fas fa-chevron-circle-down"></i></a>
+                        <div class="sub_item">
+                            <ul>
+                                <li><a href="">Regular Fit</a></li>
+                                <li><a href="">Relaxed Fit</a></li>
+                                <li><a href="">Slim Fit</a></li>
+                                <li><a href="">loose</a></li>
+                              
+                               
+                              
+                            </ul>
+                          </div></li>
+                    <li><a href="">Rating</a><a href=""><i class="fas fa-chevron-circle-down"></i></a>
+                        <div class="sub_item">
+                            <ul>
+                                <li><a href="">4.5 and above</a></li>
+                                <li><a href="">4 and above</a></li>
+                                <li><a href="">3.5 and above</a></li>
+                                
+                                <li><a href="">36</a></li>
+                               
+                              
+                            </ul>
+                          </div></li>
+                    <li><a href="">Discount</a><a href=""><i class="fas fa-chevron-circle-down"></i></a>
+                        <div class="sub_item">
+                            <ul>
+                                <li><a href="">10 or more</a></li>
+                                
+                             
+                               
+                              
+                            </ul>
+                          </div>
+                        </li>
+                    <li><a href="">Sort By</a><a href=""><i class="fas fa-chevron-circle-down"></i></a>
+                        <div class="sub_item">
+                            <ul>
+                                <li><a href="">Popular</a></li>
+                                <li><a href="">New</a></li>
+                                <li><a href="">Price:High To Low</a></li>
+                                <li><a href="">Price :Low to Hogh</a></li>
+                               
+                               
+                              
+                            </ul>
+                          </div>
+                    </li>
+                    
+                    
+                    
+                </ul>
+            </div>
+            <!-- side filter bar end here -->
+          
+            <!-- product item start here -->
+            <div class="product_item_box">
+<!--                    
+                    <div>
+                        <img src="https://images.bewakoof.com/t320/mickey-gesture-men-s-pyjama-aop-411121-1641471341-1.jpg" alt="">
+                        <h6>Product name</h6>
+                        <ul><li><p>Price</p> <p>sttrick price</p></li></ul>
+                         <p>Special Price</p>
+                    </div>
+                   
+                    <div>
+                        <img src="https://images.bewakoof.com/t320/mickey-gesture-men-s-pyjama-aop-411121-1641471341-1.jpg" alt="">
+                        <h6>Product name</h6>
+                        <ul><li><p>Price</p> <p>sttrick price</p></li></ul>
+                         <p>Special Price</p>
+                    </div>
+                    
+                    <div>
+                        <img src="https://images.bewakoof.com/t320/mickey-gesture-men-s-pyjama-aop-411121-1641471341-1.jpg" alt="">
+                        <h6>Product name</h6>
+                        <ul><li><p>Price</p> <p>sttrick price</p></li></ul>
+                         <p>Special Price</p>
+                    </div>
+                    
+                    <div>
+                        <img src="https://images.bewakoof.com/t320/mickey-gesture-men-s-pyjama-aop-411121-1641471341-1.jpg" alt="">
+                        <h6>Product name</h6>
+                        <ul><li><p>Price</p> <p>sttrick price</p></li></ul>
+                         <p>Special Price</p>
+                    </div>
+                    
+                    <div>
+                        <img src="https://images.bewakoof.com/t320/mickey-gesture-men-s-pyjama-aop-411121-1641471341-1.jpg" alt="">
+                        <h6>Product name</h6>
+                        <ul><li><p>Price</p> <p>sttrick price</p></li></ul>
+                         <p>Special Price</p>
+                    </div>
+                    
+                    <div>
+                        <img src="https://images.bewakoof.com/t320/mickey-gesture-men-s-pyjama-aop-411121-1641471341-1.jpg" alt="">
+                        <h6>Product name</h6>
+                        <ul><li><p>Price</p> <p>sttrick price</p></li></ul>
+                         <p>Special Price</p>
+                    </div>
+
+                    
+                    <div>
+                        <img src="https://images.bewakoof.com/t320/mickey-gesture-men-s-pyjama-aop-411121-1641471341-1.jpg" alt="">
+                        <h6>Product name</h6>
+                        <ul><li><p>Price</p> <p>sttrick price</p></li></ul>
+                         <p>Special Price</p>
+                    </div> -->
+                  <!-- product item end here -->
+            
+            </div>
+            
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
+<script>
+    //  <div>
+    //                     <img src="https://images.bewakoof.com/t320/mickey-gesture-men-s-pyjama-aop-411121-1641471341-1.jpg" alt="">
+    //                     <h6>Product name</h6>
+    //                     <ul><li><p>Price</p> <p>sttrick price</p></li></ul>
+    //                      <p>Special Price</p>
+    //                 </div>
+    let array = JSON.parse(localStorage.getItem("bewakoof_products"));
+
+    console.log("array",array)
+    //displayItem(array);
+        let wish_arr = JSON.parse(localStorage.getItem("bewakoof_wishlist"))||[];
+
+
+// setTimeout(
+
+//     displayItem(array)
+//     console.log("hello");
+
+// ,5000);
+
+      let categorie=  JSON.parse(localStorage.getItem("bewakoof_products"));
+      let [categories,gender]=categorie;
+
+    let arrays;
+        get(categories,gender)
+async function get(categories) {
+    // https://bewakoof-clone.herokuapp.com/product
+    let x;
+    if(gender=="male")
+    {
+         x = await fetch(
+      `https://bewakoof-clone.herokuapp.com/men/${categories}`
+     
+      
+
+    );
+    }
+    if(gender=="female")
+    {
+         x = await fetch(
+      `https://bewakoof-clone.herokuapp.com/women/${categories}`
+    );
+    }
+    if(gender=="accessories")
+    {
+        x = await fetch(
+      `https://bewakoof-clone.herokuapp.com/accessories/${categories}`
+    );
+    }
+    
+    let y = await x.json();
+
+    y = y.Men;
+    console.log(y);
+
+           arrays=y;
+
+    // localStorage.setItem("bewakoof_products", JSON.stringify(categories));
+    setTimeout(() => {displayItem(arrays)}, 1000);
+  }
+ 
+
+
+ 
+
+
+function displayItem(arr){
+    
+    document.querySelector(".product_item_box").innerHTML = "";
+    arr.map((el)=>{
+        console.log(el)
+        let div = document.createElement("div");
+        let img = document.createElement("img");
+        let wish_div = document.getElementById("div");
+        let wish_img = document.createElement("img");
+        wish_img.src = "https://cdn3.iconfinder.com/data/icons/marketing-e-commerce/128/icons_-_marketing-41-512.png"
+        wish_img.style.position = "absolute"
+        wish_img.style.height = "20px";
+        wish_img.style.width = "20px";
+        wish_img.style.marginTop = "-355px"
+        wish_img.style.marginLeft = "205px"
+        wish_img.style.padding = "7px"
+        wish_img.style.borderRadius = "50%";
+        wish_img.style.backgroundColor = "white";
+        img.src = el.images[0];
+        let h6 = document.createElement("h5");
+        h6.innerText = el.name;
+        let div1 = document.createElement("div");
+        let p1 = document.createElement("p");
+        p1.innerText = "₹ "+Math.floor(Number(el.price) - (Number(el.discount)/100)*el.price) ;
+        let p2 = document.createElement("p");
+        p2.style.marginLeft = "5px";
+        p2.style.textDecoration = "line-through";
+        p2.style.color = "grey";
+        p2.innerText = el.price;
+        div1.append(p1, p2);
+        div1.style.display = "flex";
+        let p3 = document.createElement("p");
+        p3.style.backgroundColor = "whitesmoke"
+        p3.innerText = `${el.tribe} For TriBe Members`;
+        div.append(img,h6, div1, p3, wish_img);
+        div.style.cursor = "pointer";
+        img.addEventListener("click", ()=>{
+            localStorage.setItem("bewakoof_single_product", JSON.stringify(el._id));
+            if(gender=="accessories")
+            {
+                window.location.href="./singleaccessoriesprdt.html"
+            }
+            else
+            {
+                window.location.href = "./single_product.html";
+            }
+           
+        })
+        document.querySelector(".product_item_box").append(div);
+        wish_img.addEventListener("click", ()=>{
+            wish_img.style.backgroundColor = "red";
+            wish_arr.push(el);
+            localStorage.setItem("bewakoof_wishlist", JSON.stringify(wish_arr));
+        })
+    });
+    document.querySelector(".spinner1").style.display = "none";
+}
+    
+function sort(){
+    console.log(array);
+        let value = document.getElementById("sortPrice").value;
+        console.log(value);
+        if(value === "low"){
+            array.sort((a, b) => Number(a.price) - Number(b.price));
+            console.log(array);
+        }else if(value === "high"){
+            array.sort((a, b) => Number(b.price) - Number(a.price));
+        }else if(value === "new"){
+            array.sort((a, b) => {
+      if (a.name > b.name)
+        return -1;
+    if (a.name < b.name)
+        return 1;
+    return 0;
+     });
+    }
+    else if(value === "popular"){
+            array.sort((a, b) => {
+      if (a.name > b.name)
+        return 1;
+    if (a.name < b.name)
+        return -1;
+    return 0;
+     });
+    }
+
+    displayItem(array);
+}
+
+</script>
+<!-- {
+    "id": "jg6",
+    "name": "Atlantic Deep Men's Ottoman Joggers",
+    "price": "1899",
+    "image1": "https://images.bewakoof.com/t540/atlantic-deep-men-s-ottoman-joggers-337802-1641470949-1.jpg",
+    "image2": "https://images.bewakoof.com/t540/atlantic-deep-men-s-ottoman-joggers-337802-1641470952-2.jpg",
+    "image3": "https://images.bewakoof.com/t540/atlantic-deep-men-s-ottoman-joggers-337802-1641470956-3.jpg",
+    "image4": "https://images.bewakoof.com/t540/atlantic-deep-men-s-ottoman-joggers-337802-1641470959-4.jpg",
+    "image5": "https://images.bewakoof.com/t540/atlantic-deep-men-s-ottoman-joggers-337802-1641470963-5.jpg",
+    "desc": "Regular fit - Fits just right - not too tight, not too loose.Terry, 60% Cotton 40% Poly Light Weight, Soft & Durable",
+    "tribe": "₹80",
+    "discount": "57"
+} -->
+
+
+<script type="module">
+    import navbar from "./components/navbar.js";
+    // console.log(navbar());
+
+    document.getElementById("navbar").innerHTML=navbar();
+document.querySelector("#nav_bar_manu").style.display = "none";
+    
+    var item = JSON.parse(localStorage.getItem("bewakoof_cart"))||[];
+    // console.log(items);
+    document.getElementById("items").innerText = item.length;
+    console.log(item.length);  
+    
+    
+</script>
