@@ -27,38 +27,51 @@ router.get("/:id", async (req, res) => {
 
 // post route
 
-router.post(
-  "/:_id",
-  body("full_name").notEmpty().withMessage("Full name should not be empty!"),
-  body("city").notEmpty().withMessage("City should not be empty!"),
-  body("state").notEmpty().withMessage("State should not be empty!"),
-  body("flatno").notEmpty().withMessage("flatno should not be empty!"),
+// router.post(
+//   "",
+//   // body("full_name").notEmpty().withMessage("Full name should not be empty!"),
+//   // body("city").notEmpty().withMessage("City should not be empty!"),
+//   // body("state").notEmpty().withMessage("State should not be empty!"),
+//   // body("flatno").notEmpty().withMessage("flatno should not be empty!"),
 
-  body("pincode")
-    .isLength({ min: 6, max: 6 })
-    .withMessage("Pincode should be six digits"),
-  body("mobilenumber")
-    .isLength({ min: 10, max: 11 })
-    .withMessage(" Mobile Number should be ten digits"),
-  async (req, res) => {
-    try {
-      const errors = validationResult(req);
-      // errors = []
+//   // body("pincode")
+//   //   .isLength({ min: 6, max: 6 })
+//   //   .withMessage("Pincode should be six digits"),
+//   // body("mobilenumber")
+//   //   .isLength({ min: 10, max: 11 })
+//   //   .withMessage(" Mobile Number should be ten digits"),
 
-      if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
-      }
+//   async (req, res) => {
+//     try {
+//       console.log(req.body);
+//       const errors = validationResult(req);
+//       // errors = []
+//       console.log(errors);
 
-      const Address = await address.create(req.body);
+//       if (!errors.isEmpty()) {
+//         return res.status(400).json({ errors: errors.array() });
+//       }
 
-      return res.status(200).send(Address);
-    } catch (err) {
-      return res.status(500).send(err.message);
-    }
-  }
-);
+//       const Address = await address.create(req.body);
+
+//       return res.status(200).send(Address);
+//     } catch (err) {
+//       return res.status(500).send(err.message);
+//     }
+//   }
+// );
 
 // patch route
+
+router.post("", async (req, res) => {
+  try {
+    console.log(req);
+    const Address = await address.create(req.body);
+    return res.status(200).send(Address);
+  } catch (e) {
+    return res.send(e.message);
+  }
+});
 
 router.patch("/:id", async (req, res) => {
   try {

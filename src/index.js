@@ -17,19 +17,29 @@ const mencontroller = require("./controllers/men.controller");
 const cors = require("cors");
 const app = express();
 app.use(cors());
+let ejs = require("ejs");
+const allproductscontroller = require("./controllers/allproductcontroller.js");
 
 app.use(express.json());
 // app.use("/men", menController);
 // app.use("/women", womenController);
+
+const bodyParser = require("body-parser");
+
+app.use(bodyParser.json());
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post("/register", register);
 app.post("/login", login_mobile);
 app.post("/login/password", login);
 app.use("/users", userController);
 app.use("/product", productController);
-app.use("/address", addresscontroler);
+
+app.use("/localhost:2345/address", addresscontroler);
 app.use("/men", menController);
 app.use("/women", womenController);
+app.use("/all_prdt_byid", allproductscontroller);
 
 app.use("/accessories", accessoriesController);
 passport.serializeUser(function (user, done) {
@@ -66,7 +76,7 @@ app.get("", async (req, res) => {
   }
 });
 
-const port = process.env.PORT || 2345;
+const port = process.env.PORT || 5500;
 
 app.listen(port, async () => {
   try {

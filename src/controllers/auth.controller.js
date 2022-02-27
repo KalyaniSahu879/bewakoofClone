@@ -1,4 +1,5 @@
 require("dotenv").config();
+const { append } = require("express/lib/response");
 const jwt = require("jsonwebtoken");
 const User = require("../models/user.model");
 
@@ -9,6 +10,7 @@ const newToken = (user) => {
 const register = async (req, res) => {
   try {
     // we will try to find the user with the email provided
+
     let user = await User.findOne({ mobile_number: req.body.mobile_number })
       .lean()
       .exec();
