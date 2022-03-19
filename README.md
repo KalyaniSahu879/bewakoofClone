@@ -35,7 +35,7 @@ Implemented all the above said functionalities using Databases, and enhanced dyn
   <li>Mohit</li>
   <li>Ankit</li>
   <li>Saurabh</li>
-  <li>Vivek Sharma<li>
+  <li>Vivek Sharma</li>
 </ul>
 
 ## Related Links
